@@ -1,0 +1,510 @@
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$product = $objectManager->get('Magento\Framework\Registry')->registry('current_product');//get current product
+$sku = $product->getSku();
+?>
+<!--------------------------车型匹配功能 Start------------------------------------->
+<?php
+    /*无适配sku不显示车型匹配框*/
+    if($sku!="BR1001W008" && $sku!="BR1001W009" && $sku!="OEHLHL-1024" && $sku!="BO04-F03" && $sku!="BO1001W002" && $sku!="BR1001W014" && $sku!="BR1001W015" && $sku!="OEBO-0034" && $sku!="OEBO-0038" && $sku!="OEBO-0046" && $sku!="OEBO-0031" && $sku!="OEBO-2003" && $sku!="HA01-Q002_xS1" && $sku!="OEBO-0036" && $sku!="OEBO-0037" && $sku!="OETIFM-1070" && $sku!="OEHLHL-1000" && $sku!="OEHLHL-1023" && $sku!="OEHLHL-1031" && $sku!="OEHLHL-1019" && $sku!="OEHLHL-1025" && $sku!="OEHLHL-1032" && $sku!="OEHLHL-1028" && $sku!="OEHLHL-1038" && $sku!="OEHLHL-1010" && $sku!="OETEWB-0029" && $sku!="OETEWB-0030" && $sku!="OETEWB-0034" && $sku!="OETEWB-0035" && $sku!="B-WB-X1" && $sku!="BO05-F03B1" && $sku!="BR1001W012" && $sku!="OEBO-0030" && $sku!="BR1001W013" && $sku!="OEBO-0026" && $sku!="OEBO-0028" && $sku!="OEBO-0035" && $sku!="OEBO-0042" && $sku!="YR0401W006" && $sku!="YR0401W007" && $sku!="YR0401W008" && $sku!="BR1001W010" && $sku!="OEBO-0022" && $sku!="OEBO-0041" && $sku!="OEBO-0039" && $sku!="OEBO-2002" && $sku!="OETEWT-0014" && $sku!="OETEWT-0017" && $sku!="OEBO-0021" && $sku!="OEBO-0032" && $sku!="OEBO-0033" && $sku!="OEBO-0029" && $sku!="ED0201W006" && $sku!="OETEWT-2006" && $sku!="OEBO-2000" && $sku!="OETIFM-1057" && $sku!="OETIFM-1059" && $sku!="OETEWT-0015" && $sku!="OETEWT-0016" && $sku!="OEHLHL-1003" && $sku!="OEHLHL-1016" && $sku!="OEHLHL-1039" && $sku!="BR1001W016" && $sku!="OEHLHL-1013" && $sku!="OEHLHL-1015" && $sku!="OETEWT-0013" && $sku!="OETEWT-0011" && $sku!="OETEWT-0010" && $sku!="OETEWT-0012" && $sku!="EO1001W068" && $sku!="OEHLHL-1033" && $sku!="OEHLHL-1035" && $sku!="OEHLHL-1037" && $sku!="OEHLHL-1005" && $sku!="OEHLHL-1006" && $sku!="OEHLHL-1007" && $sku!="OEHLHL-1009" && $sku!="OEHLHL-1012" && $sku!="OEHLHL-1017" && $sku!="OEHLHL-1020" && $sku!="OEHLHL-1021" && $sku!="OEHLHL-1026" && $sku!="OEHLHL-1027" && $sku!="OEHLHL-1030" && $sku!="OETIFM-1087" && $sku!="OEHLHL-1002" && $sku!="OEHLHL-1022" && $sku!="OEHLHL-1004" && $sku!="OEHLHL-1018" && $sku!="OEHLHL-1029" && $sku!="OEHLHL-1036" && $sku!="OETIFM-1098" && $sku!="OETESS-0059" && $sku!="OETETC-1055" && $sku!="OETESS-0073" && $sku!="OETESS-0071" && $sku!="OETIFM-1060" && $sku!="OETETC-1053" && $sku!="OETETC-1054" && $sku!="OETETC-1057" && $sku!="OETETC-1073" && $sku!="OETIFM-1096" && $sku!="OETIFM-1097" && $sku!="OETIFM-1102" && $sku!="OETIFM-1104" && $sku!="BO1001W003" && $sku!="BO1001W004" && $sku!="BO1001W001" && $sku!="OEBO-0015" && $sku!="OEBO-0023" && $sku!="OEBO-0024" && $sku!="BR1001W005" && $sku!="OEBO-0043" && $sku!="OEBO-0047" && $sku!="BR1001W006" && $sku!="BR1001W011" && $sku!="OEBO-0016" && $sku!="OEBO-0017" && $sku!="OEBO-0020" && $sku!="OEBO-0025" && $sku!="OEBO-0027" && $sku!="OEBO-0018" && $sku!="OEBO-0019" && $sku!="OEBO-0040" && $sku!="OEBO-0044" && $sku!="OEBO-0045" && $sku!="OEBO-2001" && $sku!="OETIFM-1105" && $sku!="OETIFM-1108" && $sku!="OETIFM-1112" && $sku!="OETIFM-1113" && $sku!="OETIFM-1115" && $sku!="OETIFM-1117" && $sku!="OETIFM-1118" && $sku!="OETIFM-1121" && $sku!="OETIFM-1122" && $sku!="OETIFM-1123" && $sku!="OETIFM-1124" && $sku!="OETIFM-1145" && $sku!="OEHLHL-9005" && $sku!="OEHLHL-9007" && $sku!="OEHLHL-9009" && $sku!="OEHLHL-9011" && $sku!="OETESS-0077" && $sku!="OETESS-0101" && $sku!="OETISC-5001" && $sku!="OETESS-0103" && $sku!="OETESS-0104" && $sku!="OETESS-0105" && $sku!="OETESS-0106" && $sku!="OETETC-1074" && $sku!="OETETC-1075" && $sku!="OETETC-1076" && $sku!="OEHLHL-1001" && $sku!="OETIFM-1137" && $sku!="OETIFM-1150" && $sku!="OETETC-1052" && $sku!="OETETC-1077" && $sku!="OETETC-1080" && $sku!="OETETC-1082" && $sku!="OETETC-1078" && $sku!="OETETC-1084" && $sku!="OETETC-1081" && $sku!="OETIFM-1114" && $sku!="OETIFM-1149" && $sku!="OETIFM-1152" && $sku!="OETIFM-1156" && $sku!="OETIFM-1159" && $sku!="OETIFM-1091" && $sku!="OETIFM-1158" && $sku!="OETIFM-1127" && $sku!="OETIFM-1133" && $sku!="OETIFM-1058" && $sku!="OETETC-1079" && $sku!="OETIFM-1147" && $sku!="OETIFM-1132" && $sku!="OETIFM-1144" && $sku!="OETIFM-1143" && $sku!="OETIFM-1136" && $sku!="OETIFM-1130" && $sku!="OETIFM-1140" && $sku!="OETIFM-1100" && $sku!="OETIFM-1090" && $sku!="OETIFM-1160" && $sku!="OETIFM-1103" && $sku!="OETIFM-1128" && $sku!="OETIFM-1094" && $sku!="OETIFM-1099" && $sku!="OETIFM-1148" && $sku!="OETEWB-0031" && $sku!="OETEWB-0037" && $sku!="OETEWB-0038" && $sku!="OETETC-1083" && $sku!="OEHLHL-9013" && $sku!="OEHLHL-9014" && $sku!="OEHLHL-9006" && $sku!="OEHLHL-9010" && $sku!="OEHLHL-9001" && $sku!="OEHLHL-9002" && $sku!="OEHLHL-9012" && $sku!="OEHLHL-1014" && $sku!="OEHLHL-1001-OE" && $sku!="OEHLHL-1011" && $sku!="YO03K07" && $sku!="OETIFM-1134" && $sku!="OETIFM-1101" && $sku!="OETIFM-1110" && $sku!="OETIFM-1111" && $sku!="OETISC-6001" && $sku!="OETEWB-1001" && $sku!="OETEWB-1010" && $sku!="OETEWB-1003" && $sku!="OETEWB-1004" && $sku!="OETEWB-1008" && $sku!="EO1001W040" && $sku!="EO1001W042" && $sku!="OETIFM-1056" && $sku!="OETIFM-1109" && $sku!="OETIFM-1119" && $sku!="OETIFM-1125" && $sku!="OETIFM-1126" && $sku!="OETIFM-1153" && $sku!="OETIFM-1146" && $sku!="OETIFM-1139" && $sku!="OETIFM-1142" && $sku!="OETIFM-1165" && $sku!="OETIFM-1166" && $sku!="OETIFM-1167")
+    {
+?>
+<div style="text-align: left;padding: 0 0 0 2%;background-color: #000;color: #FFF;font-size: 20px;font-weight: 600;">SELECT YOUR VEHICLE</div>
+<div style="border: 1px solid #ddd;padding: 10px;">
+    <div style="text-align: center;width: 98%;margin: auto;">
+        <div id="vehicletype_area"></div>
+        <input type="button" value="Search" id="g-search"/>
+        <input type="button" value="Change Vehicle" id="g-reset"/>
+        <div id="get-result-a"></div>
+    </div>
+</div>
+<?
+    }
+    else
+    {
+?>
+<div style="text-align: left;padding: 0 0 0 2%;/* background-color: #000; *//* color: #FFF; */font-size: 20px;font-weight: 600;">&nbsp;</div>
+<?php
+    }
+?>
+<script>
+require(['jquery', 'jquery/ui'], function(jQuery){
+// JavaScript Document
+    var ck_pyear = jQuery.cookie('ck_pyear');
+  	var ck_pmake = jQuery.cookie('ck_pmake');
+  	var ck_pmodel = jQuery.cookie('ck_pmodel');
+    var ck_ptrim = jQuery.cookie('ck_ptrim');
+    var ck_pengine = jQuery.cookie('ck_pengine');
+    
+    jQuery('#g-search').attr("disabled","disabled");
+    //往ID为vehicletype_area的DIV扔五个下拉
+    jQuery("#vehicletype_area").html("<select id='year'><option value='Select Year' selected>Select Year</option></select><select id='make'><option value='Select Make' selected>Select Make</option></select><select id='model'><option value='Select Model' selected>Select Model</option></select><select id='trim'><option value='Select Trim' selected>Select Trim</option></select><select id='engine'><option value='Select Engine' selected>Select Engine</option></select>");
+    
+    //往Year的下拉里面填充数据
+  	if(ck_pyear)//加载Year
+    {
+      	LoadYear();
+    	jQuery('#year').find("option:contains("+ck_pyear+")").attr("selected",true);
+    }
+    else
+    {
+      	LoadYear();
+    }
+  
+  	if(ck_pmake)//加载Make
+    {
+      	LoadMake();
+    	jQuery('#make').find("option:contains("+ck_pmake+")").attr("selected",true);
+    }
+    else
+    {
+      	LoadYear();
+    }
+  	if(ck_pmodel)//加载Model
+    {
+      	LoadModel();
+    	jQuery('#model').find("option:contains("+ck_pmodel+")").attr("selected",true);
+    }
+    else
+    {
+      	LoadModel();
+    }
+  	if(ck_ptrim)//加载Trim
+    {
+      	LoadTrim();
+    	jQuery('#trim').find("option:contains("+ck_ptrim+")").attr("selected",true);
+    }
+    else
+    {
+      LoadTrim();
+    }
+  	if(ck_pengine)//加载Engine
+    {
+      	LoadEngine();
+      	LoadAll();
+    	jQuery('#engine').find("option:contains("+ck_pengine+")").attr("selected",true);
+    }
+    else
+    {
+      	LoadEngine();
+    }
+    
+    //给Year的下拉加变的事件
+    jQuery("#year").change(function(){
+        //加载Make
+        LoadMake();
+        //加载Model
+        LoadModel();
+        //加载Trim
+        LoadTrim();
+        //加载Engine
+        LoadEngine();
+    })
+    //给Make的下拉加变的事件
+    jQuery("#make").change(function(){
+        //加载Model
+        LoadModel();
+        //加载Trim
+        LoadTrim();
+        //加载Engine
+        LoadEngine();
+    })
+    //给Model的下拉加变的事件
+    jQuery("#model").change(function(){
+        //加载Trim
+        LoadTrim();
+        //加载Engine
+        LoadEngine();
+    })
+    //给Trim的下拉加变的事件
+    jQuery("#trim").change(function(){
+        //加载Engine
+        LoadEngine();
+    })
+    //给Engine的下拉加变的事件
+    jQuery("#engine").change(function(){
+        //启用search
+        jQuery('#g-search').removeAttr("disabled");
+    })
+    jQuery("#g-search").click(function(){
+        //加载Engine
+        LoadAll();
+    })
+    jQuery("#g-reset").click(function(){
+        //加载Engine
+        ResetAll();
+    })
+    
+    
+    
+});
+
+var psku = '<?php echo $sku; ?>';//"0001"; //父级代号
+
+//加载Year的方法
+function LoadYear(){
+    jQuery.ajax({
+        async:false,
+        url:"https://apps.oedro.com:1443/apps/get_vehicletype/index.php",
+        data:{pid:1,psku:psku},
+        type:"POST",
+        dataType:"JSON",
+        success: function(data){
+            var str = "";
+            str += "<option value='Select Year'>Select Year</option>";
+            for(var i=0;i<data.length;i++){
+                str += "<option value='"+data[i]+"'>"+data[i]+"</option>";
+            }
+            jQuery("#year").html(str);
+        }
+    });
+}
+
+//加载Make的方法
+function LoadMake(){
+    var pyear = jQuery("#year").val(); //父级代号
+    jQuery.ajax({
+        async:false,
+        url:"https://apps.oedro.com:1443/apps/get_vehicletype/index.php",
+        data:{pid:2,psku:psku,pyear:pyear},
+        type:"POST",
+        dataType:"JSON",
+        success: function(data){
+            var str = "";
+            str += "<option value='Select Make'>Select Make</option>";
+            for(var i=0;i<data.length;i++){
+                str += "<option value='"+data[i]+"'>"+data[i]+"</option>";
+            }
+            jQuery("#make").html(str);
+        }
+    });
+}
+
+//加载Model的方法
+function LoadModel(){
+    var pyear = jQuery("#year").val(); //父级代号
+    var pmake = jQuery("#make").val(); //父级代号
+    jQuery.ajax({
+　　　　async:false,　
+        url:"https://apps.oedro.com:1443/apps/get_vehicletype/index.php",
+        data:{pid:3,psku:psku,pyear:pyear,pmake:pmake},
+        type:"POST",
+        dataType:"JSON",
+        success: function(data){
+            var str = "";
+            str += "<option value='Select Model'>Select Model</option>";
+            for(var i=0;i<data.length;i++){
+                str += "<option value='"+data[i]+"'>"+data[i]+"</option>";
+            }
+            jQuery("#model").html(str);
+        }
+    });
+}    
+
+//加载Trim的方法
+function LoadTrim(){
+    var pyear = jQuery("#year").val(); //父级代号
+    var pmake = jQuery("#make").val(); //父级代号
+    var pmodel = jQuery("#model").val(); //父级代号
+    jQuery.ajax({
+　　　　async:false,　
+        url:"https://apps.oedro.com:1443/apps/get_vehicletype/index.php",
+        data:{pid:4,psku:psku,pyear:pyear,pmake:pmake,pmodel:pmodel},
+        type:"POST",
+        dataType:"JSON",
+        success: function(data){
+            var str = "";
+            str += "<option value='Select Trim'>Select Trim</option>";
+            for(var i=0;i<data.length;i++){
+                str += "<option value='"+data[i]+"'>"+data[i]+"</option>";
+            }
+            jQuery("#trim").html(str);
+        }
+    });
+}    
+    
+//加载Engine的方法
+function LoadEngine(){
+    var pyear = jQuery("#year").val(); //父级代号
+    var pmake = jQuery("#make").val(); //父级代号
+    var pmodel = jQuery("#model").val(); //父级代号
+    var ptrim = jQuery("#trim").val(); //父级代号
+    jQuery.ajax({
+　　　　async:false,　
+        url:"https://apps.oedro.com:1443/apps/get_vehicletype/index.php",
+        data:{pid:5,psku:psku,pyear:pyear,pmake:pmake,pmodel:pmodel,ptrim:ptrim},
+        type:"POST",
+        dataType:"JSON",
+        success: function(data){
+            var str = "";
+            str += "<option value='Select Engine'>Select Engine</option>";
+            for(var i=0;i<data.length;i++){
+                str += "<option value='"+data[i]+"'>"+data[i]+"</option>";
+            }
+            jQuery("#engine").html(str);
+        }
+    });
+}  
+
+function LoadAll(){
+    var pyear = jQuery("#year").val(); //父级代号
+    var pmake = jQuery("#make").val(); //父级代号
+    var pmodel = jQuery("#model").val(); //父级代号
+    var ptrim = jQuery("#trim").val(); //父级代号
+    var pengine = jQuery("#engine").val(); //父级代号
+    jQuery.ajax({
+　　　　async:false,　
+        url:"https://apps.oedro.com:1443/apps/get_vehicletype/index.php",
+        data:{pid:6,psku:psku,pyear:pyear,pmake:pmake,pmodel:pmodel,ptrim:ptrim,pengine:pengine},
+        type:"POST",
+        dataType:"JSON",
+        success: function(data){
+            if(data != "")
+                jQuery("#get-result-a").html("<span style='color:green;'>FITS YOUR VEHICLE: "+pyear+" "+pmake+" "+pmodel+"</span>");
+            else
+                jQuery("#get-result-a").html("<span style='color:red;'>Sorry, Your vehicle type is not suitable.</span>");
+        }
+    });
+    jQuery.cookie('ck_pyear', pyear);
+  	jQuery.cookie('ck_pmake', pmake);
+  	jQuery.cookie('ck_pmodel', pmodel);
+    jQuery.cookie('ck_ptrim', ptrim);
+    jQuery.cookie('ck_pengine', pengine);
+}
+
+function ResetAll(){
+    jQuery("#year").find("option:contains('Select Year')").attr("selected",true);
+    jQuery("#make").find("option:contains('Select Make')").attr("selected",true);
+    jQuery("#model").find("option:contains('Select Model')").attr("selected",true);
+    jQuery("#trim").find("option:contains('Select Trim')").attr("selected",true);
+    jQuery("#engine").find("option:contains('Select Engine')").attr("selected",true);
+    jQuery("#get-result-a").html("");
+    jQuery('#g-search').attr("disabled","disabled");
+}
+</script>
+<style>
+    #vehicletype_area select{
+        /*width:unset !important;*/
+        /*display: none;*/
+    }
+    #year, #make, #model, #trim, #engine{
+        height: 35px;
+        margin-bottom: 10px;
+    }
+    form#product_addtocart_form {
+        display: block;
+        margin: 20px 0 20px 0;
+    }
+    .product-add-form .box-tocart {
+        margin-top: 20px;
+    }
+    @media (max-width: 480px) {
+        .product-info-main .product-addto-links {
+            top: -80px !important;
+        }
+        #product-addtocart-button {
+            width: unset !important;
+        }
+        div#addthis_wrap {
+            padding: unset;
+        }
+    }
+    div#addthis_wrap {
+        display: inline-block;
+        margin: 12px;
+        padding: 0 0 50px 0;
+    }
+    .product.media {
+        z-index: 99999;
+        background-color:#FFF;
+    }
+    .product-info-main {
+        margin-bottom: 0px !important;
+    }
+</style>
+<!--------------------------车型匹配功能 End------------------------------------->
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Magento\Catalog\Block\Product\View */
+/*判断是否为预售*/
+$helper = $this->helper('Webkul\Preorder\Helper\Data');
+$productId = $this->getProduct()->getId();
+?>
+<?php $_product = $block->getProduct(); ?>
+<?php $buttonTitle = __('Add to Cart'); ?>
+<?php 
+    $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+    $StockState = $objectManager->get('\Magento\InventorySalesApi\Api\GetProductSalableQtyInterface');
+    $qty = $StockState->execute($_product->getSku(), 1);
+?>
+<?php //echo $_product->isSaleable()."------------".$qty?>
+<?php if ($qty == 0): ?>
+<style>
+    .product-social-links, .amazon-minicart-container{display:none !important;}
+</style>
+<?php endif; ?>
+<?php if (($_product->isSaleable() && $qty > 0) || $helper->isPreorder($productId)): ?>
+    <div class="box-tocart">
+        <div class="fieldset">
+            <?php if ($block->shouldRenderQuantity()): ?>
+                <div class="field qty">
+                    <label class="label" for="qty"><span><?php /* @escapeNotVerified */
+                            echo __('Qty') ?></span></label>
+                    <div class="control control-qty-cart">
+                        <input type="number"
+                               name="qty"
+                               id="qty"
+                               maxlength="12"
+                               value="<?php /* @escapeNotVerified */
+                               echo $block->getProductDefaultQty() * 1 ?>"
+                               title="<?php /* @escapeNotVerified */
+                               echo __('Qty') ?>" class="qty-default input-text qty"
+                               data-validate="<?php echo $block->escapeHtml(json_encode($block->getQuantityValidators())) ?>"
+                        />
+
+                        <div class="control-qty">
+                            <span class="quantity-controls quantity-plus"></span>
+                            <span class="quantity-controls quantity-minus"></span>
+
+                            <script type="text/javascript">
+                                require([
+                                    'jquery'
+                                ], function ($) {
+                                    $('.quantity-plus').click(function () {
+                                        $('.qty-default').val(Number($('.qty-default').val()) + 1);
+                                    });
+
+                                    $('.quantity-minus').click(function () {
+                                        var value = Number($('.qty-default').val()) - 1;
+                                        if (value > 0) {
+                                            $('.qty-default').val(value);
+                                        }
+
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?>
+            <div class="actions">
+                <button type="submit"
+                        title="<?php /* @escapeNotVerified */
+                        echo $buttonTitle ?>"
+                        class="action primary tocart"
+                        id="product-addtocart-button">
+                <span><?php /* @escapeNotVerified */
+                    echo $buttonTitle ?></span>
+                </button>
+                <?php echo $block->getChildHtml('', true) ?>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
+<?php if (!$block->isRedirectToCartEnabled()) : ?>
+    <script>
+        require([
+            'jquery',
+            'mage/mage',
+            'Magento_Catalog/product/view/validation',
+            'Magento_Catalog/js/catalog-add-to-cart'
+        ], function ($) {
+            'use strict';
+
+            $('#product_addtocart_form').mage('validation', {
+                radioCheckboxClosest: '.nested',
+                submitHandler: function (form) {
+                    var widget = $(form).catalogAddToCart({
+                        bindSubmit: false
+                    });
+
+                    widget.catalogAddToCart('submitForm', $(form));
+
+                    return false;
+                }
+            });
+        });
+    </script>
+<?php else : ?>
+    <script type="text/x-magento-init">
+    {
+        "#product_addtocart_form": {
+            "Magento_Catalog/product/view/validation": {
+                "radioCheckboxClosest": ".nested"
+            }
+        }
+    }
+
+    
+    </script>
+<?php endif; ?>
+
+
+<script>
+require(['jquery', 'jquery/ui'], function(jQuery){
+    /**
+     * 
+     * @param {string} box 需要定位的元素css选择器 以元素相邻的下一个元素为主
+     */
+    const absoluteFN = (box, boxTop, bootomTop, H = 0, W) => {
+        console.log(box, boxTop, bootomTop, H);
+        if (window.innerWidth > 992) {
+            const scrollY = window.scrollY;
+            if (scrollY >= boxTop && scrollY <= bootomTop - H) {
+                jQuery(box).css({
+                    position: 'absolute',
+                    top: (scrollY) + 'px',
+                    width: W + 'px',
+                    boxSizing: 'content-box',
+                    backgroundColor: '#fff',
+                    zIndex: 10,
+                });
+    
+            } else if (scrollY >= boxTop && scrollY < bootomTop + 70) {
+                jQuery(box).css({
+                    top: (jQuery('.product-info-main').height() - H + boxTop) + 'px',
+                    position: 'absolute',
+                    width: W + 'px',
+                    boxSizing: 'content-box',
+                    backgroundColor: '#fff',
+                    zIndex: 10,
+                });
+    
+            } else {
+                jQuery(box).css({
+                    position: 'static',
+                    boxSizing: 'border-box',
+                    width: '49%'
+                })
+            }
+        }
+    }
+    // 这个值会随着设置css而变化，所以只能进来后就取一次
+    const box = '.product.media';
+    const boxTop = jQuery(box).offset().top;
+    const bootomTop = jQuery('.box-tocart').offset().top;
+    
+    
+    /*悬浮产品图*/
+    function setImg() {
+        const H = jQuery(box).height();
+        const W = jQuery(box).width();
+        absoluteFN(box, boxTop, bootomTop, H, W);
+    };
+    
+    let setTimeId;
+    window.addEventListener('scroll', function () {
+        if (setTimeId) {
+            clearTimeout(setTimeId);
+        }
+        setTimeId = setTimeout(setImg, 0);
+    })
+
+})
+</script>
