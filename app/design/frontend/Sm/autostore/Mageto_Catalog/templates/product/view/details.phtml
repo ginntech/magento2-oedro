@@ -1,0 +1,565 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+$_config  = $this->helper('Sm\Autostore\Helper\Data');
+$tabStyle = $_config->getProductDetail('tab_style');
+
+$show_custom_tab   = $_config->getProductDetail('show_custom_tab');
+$custom_tab_name   = $_config->getProductDetail('custom_tab_name');
+$customtab_content = $_config->getProductDetail('customtab_content');
+
+/*获取video faq内容*/
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$product = $objectManager->get('Magento\Framework\Registry')->registry('current_product');//get current product
+?>
+<?php if ($detailedInfoGroup = $block->getGroupChildNames('detailed_info', 'getChildHtml')): ?>
+    <div class="product info detailed sticky">
+        <?php $layout = $block->getLayout(); ?>
+        <div class="product data items <?php echo $tabStyle . '-style' ?>"
+             data-mage-init='{"tabs":{"openedState":"active"}}'>
+            <?php if ($tabStyle == "default" || $tabStyle == "vertical") { ?>
+                <ul class="resp-tabs-list">
+                    <?php foreach ($detailedInfoGroup as $name): ?>
+                        <?php
+                        $html = $layout->renderElement($name);
+                        if (!trim($html)) {
+                            continue;
+                        }
+                        $alias = $layout->getElementAlias($name);
+                        $label = $block->getChildData($alias, 'title');
+                        ?>
+                        <li class="data item title"
+                            aria-labeledby="tab-label-<?= /* @escapeNotVerified */
+                            $alias ?>-title"
+                            data-role="collapsible" id="tab-label-<?= /* @escapeNotVerified */
+                        $alias ?>">
+                            <a class="data switch"
+                               tabindex="-1"
+                               data-toggle="switch"
+                               href="#<?= /* @escapeNotVerified */
+                               $alias ?>"
+                               id="tab-label-<?= /* @escapeNotVerified */
+                               $alias ?>-title">
+                                <?= /* @escapeNotVerified */
+                                $label ?>
+                            </a>
+                        </li>
+                    <?php endforeach; ?>
+                    <?php if ($show_custom_tab) { ?>
+                        <li id="tab-label-customtab" class="data item title" aria-labeledby="tab-label-customtab-title"
+                            data-role="collapsible" role="tab" data-collapsible="true"
+                            aria-controls="product.info.customtab" aria-selected="false" aria-expanded="true"
+                            tabindex="0">
+                            <a class="data switch"
+                               tabindex="-1"
+                               data-toggle="switch"
+                               href="#<?= /* @escapeNotVerified */
+                               $alias ?>"
+                               id="tab-label-<?= /* @escapeNotVerified */
+                               $alias ?>-title">
+                                <?php echo $custom_tab_name ?>
+                            </a>
+                        </li>
+                    <?php } ?>
+                    <!--videos-->
+                    <?php if($product->getResource()->getAttribute('video')->getFrontend()->getValue($product)) { ?>
+                    <li id="tab-label-videos" class="data item title" aria-labeledby="tab-label-videos-title"
+                            data-role="collapsible" role="tab" data-collapsible="true"
+                            aria-controls="product.info.customtab" aria-selected="false" aria-expanded="true"
+                            tabindex="0">
+                            <a class="data switch"
+                               tabindex="-1"
+                               data-toggle="switch"
+                               href="#videos"
+                               id="tab-label-videos-title">
+                                Videos
+                            </a>
+                    </li>
+                    <?php } ?>
+                    <!--faq所有的产品都加上faq-->
+                    <?php //if($product->getResource()->getAttribute('faq')->getFrontend()->getValue($product)) { ?>
+                    <li id="tab-label-faq" class="data item title" aria-labeledby="tab-label-faq-title"
+                            data-role="collapsible" role="tab" data-collapsible="true"
+                            aria-controls="product.info.customtab" aria-selected="false" aria-expanded="true"
+                            tabindex="0">
+                            <a class="data switch"
+                               tabindex="-1"
+                               data-toggle="switch"
+                               href="#faq"
+                               id="tab-label-faq-title">
+                                Faq
+                            </a>
+                    </li>
+                    <?php //} ?>
+                </ul>
+                
+                
+
+                <div class="resp-tabs-container">
+                    <?php foreach ($detailedInfoGroup as $name): ?>
+                        <?php
+                        $html = $layout->renderElement($name);
+                        if (!trim($html)) {
+                            continue;
+                        }
+                        $alias = $layout->getElementAlias($name);
+                        $label = $block->getChildData($alias, 'title');
+                        ?>
+
+                        <div class="data item content resp-tab-content" id="<?= /* @escapeNotVerified */
+                        $alias ?>" data-role="content">
+                            <?= /* @escapeNotVerified */
+                            $html ?>
+                        </div>
+                    <?php endforeach; ?>
+                    <?php if ($show_custom_tab) { ?>
+                        <div class="data item content resp-tab-content" id="customtab" data-role="content">
+                            <?php
+                            echo $customtab_content;
+                            ?>
+                        </div>
+                    <?php } ?>
+                </div>
+            <?php } else { ?>
+                <?php foreach ($detailedInfoGroup as $name): ?>
+                    <?php
+                    $html = $layout->renderElement($name);
+                    if (!trim($html)) {
+                        continue;
+                    }
+                    $alias = $layout->getElementAlias($name);
+                    $label = $block->getChildData($alias, 'title');
+                    ?>
+                    <h2 class="data item title resp-accordion"
+                        aria-labeledby="tab-label-<?= /* @escapeNotVerified */
+                        $alias ?>-title"
+                        data-role="collapsible" id="tab-label-<?= /* @escapeNotVerified */
+                    $alias ?>">
+                        <a class="data switch"
+                           tabindex="-1"
+                           data-toggle="switch"
+                           href="#<?= /* @escapeNotVerified */
+                           $alias ?>"
+                           id="tab-label-<?= /* @escapeNotVerified */
+                           $alias ?>-title">
+                            <?= /* @escapeNotVerified */
+                            $label ?>
+                        </a>
+                    </h2>
+
+                    <div class="data item content resp-tab-content" id="<?= /* @escapeNotVerified */
+                    $alias ?>" data-role="content">
+                        <?= /* @escapeNotVerified */
+                        $html ?>
+                    </div>
+                <?php endforeach; ?>
+                <?php if ($show_custom_tab) { ?>
+                    <h2 id="tab-label-customtab" class="data item title resp-accordion"
+                        aria-labeledby="tab-label-customtab-title" data-role="collapsible" role="tab"
+                        data-collapsible="true" aria-controls="product.info.customtab" aria-selected="false"
+                        aria-expanded="true" tabindex="0">
+                        <a class="data switch"
+                           tabindex="-1"
+                           data-toggle="switch"
+                           href="#<?= /* @escapeNotVerified */
+                           $alias ?>"
+                           id="tab-label-<?= /* @escapeNotVerified */
+                           $alias ?>-title">
+                            <?php echo $custom_tab_name ?>
+                        </a>
+                    </h2>
+                    <div class="data item content resp-tab-content" id="customtab" data-role="content">
+                        <?php
+                        echo $customtab_content;
+                        ?>
+                    </div>
+                <?php } ?>
+            <?php } ?>
+                    <?php if($product->getResource()->getAttribute('video')->getFrontend()->getValue($product)) { ?>
+                    <div class="data item content resp-tab-content" id="videos" data-role="content">
+                        <?php
+                            echo $product->getResource()->getAttribute('video')->getFrontend()->getValue($product);
+                        ?>
+                    </div>
+                    <?php } ?>
+                    <?php //所有的产品都加上faq if($product->getResource()->getAttribute('faq')->getFrontend()->getValue($product)) { ?>
+                    <div class="data item content resp-tab-content" id="faq" data-role="content">
+                        <?php
+                            //echo $product->getResource()->getAttribute('faq')->getFrontend()->getValue($product);
+                        ?>
+                        <!--------------------------------------------------OEDRO-FAQ-START----------------------------------------------------------------------->
+                        <div class="product-block-title">
+                        <h2><strong>Warranty</strong></h2>
+                        <p><span style="font-size: 12pt;"><strong>Rules</strong></span></p>
+                        <ul>
+                        <li>1. All products subject to a warranty claim must contain a defect in workmanship or material.</li>
+                        <li>2. All items must be in their original condition and must not be damaged due to incorrect installation upon return.</li>
+                        <li>3. Return shipping is the responsibility of the purchaser.</li>
+                        <li>4. The warranty does not cover lost or stolen packages mailed back by the customer containing the parts being claimed under warranty.</li>
+                        <li>5. When enacting a warranty claim, You must provide a copy of the bill of sale, a valid order number or other transactional documentation to verify your purchase and photos of the defective or damaged part(s).</li>
+                        </ul>
+                        <h2>&nbsp;</h2>
+                        <h2><strong>Shipping</strong></h2>
+
+                        <p>Your items will be shipped from our 6 warehouses located in CA, WA, GA, NJ(2 warehouses), and TX depending on your address. <span style="text-decoration: underline;"><span style="color: #ff0000;"><a style="color: #ff0000; text-decoration: underline;" href="https://www.oedro.com/shipping-policy">Read more here</a></span></span></p>
+                        <p><span style="font-size: 12pt;"><strong>1.Item processing time<br></strong></span>After receiving your order, we will take some time to process the products to ensure their quality. In addition, the item's stock status will also affect our delivery. The specific processing time will vary for different products, the average processing time is 2 working days while larger quantity orders may require 2-5 days, but we guarantee that the order will be processed and shipped as soon as possible.</p>
+                        <p><span style="font-size: 12pt;"><strong>2. Shipping Methods and Shipping Time</strong></span></p>
+                        <table style="border-collapse: collapse; width: 100.081%; height: 82px;" border="1">
+                        <tbody>
+                        <tr style="height: 46px;">
+                        <td style="width: 25%; height: 46px;">Shipping Methods</td>
+                        <td style="width: 25%; height: 46px;">
+                        <p>Working&nbsp;Time</p>
+                        </td>
+                        <td style="width: 25%; height: 46px;">Delivery Time</td>
+                        <td style="width: 25%; height: 46px;">Delivery to States (A-Z)</td>
+                        </tr>
+                        <tr style="height: 18px;">
+                        <td style="width: 25%; height: 18px;">FEDEX Ground&nbsp;</td>
+                        <td style="width: 25%; height: 18px;">Mon. to Fri.</td>
+                        <td style="width: 25%; height: 18px;">3 -&nbsp;7 Days</td>
+                        <td style="width: 25%; height: 36px;" rowspan="2">
+                        <p>Alabama, Arizona, Arkansas</p>
+                        <p>California,Colorado,Connecticut, Delaware,Florida,Georgia</p>
+                        <p>Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Lousiana</p>
+                        <p>Maine,Maryland,Massachusetts,Michigan,Minnesota,Mississippi,Missouri,Montana,&nbsp;</p>
+                        <p>Nebraska, Nevada, New Hampshire, New Jersey, New Mexico,</p>
+                        <p>New York, North Carolina, North, Dakota, Ohio, Oklahoma, Oregon,</p>
+                        <p>Pennsylvania, Rhode Island, South Carolina, South Dakota,</p>
+                        <p>Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia, Wisconsin, Wyoming.</p>
+                        </td>
+                        </tr>
+                        <tr style="height: 18px;">
+                        <td style="width: 25%; height: 18px;">FEDEX Home</td>
+                        <td style="width: 25%; height: 18px;">Mon. to Sun</td>
+                        <td style="width: 25%; height: 18px;">4 -&nbsp;7 Days</td>
+                        </tr>
+                        </tbody>
+                        </table>
+                        <p>OEDRO has established 6 warehouses in the USA，and provides Free Shipping services in the whole united states except for the states of HI; PR; AK; APO; GU; APO/FPO/AE; VI; FM; MP.<br>Note 1: If you purchase a pre-sale product, The order will be shipped within 1-2 working days when it is in stock.<br>Note 2: Shipment dates on all orders are estimated, delay may happen cause of force majeure, natural disasters, inclement weather, war, public holidays, and others out of our control factors.</p>
+                        </div>
+                        <div>&nbsp;</div>
+                        <h2><strong>Returns</strong></h2>
+                        <div><span style="font-size: 12pt;"><strong> Return Policy</strong></span></div>
+                        <ul>
+                        <li>（1）Return accepted if the item is defective, damaged upon received or missing items, wrong items or incorrect &amp; non-compatible packages sent, learn more at<span style="color: #ff0000;"><span style="text-decoration: underline;"> <a style="color: #ff0000; text-decoration: underline;" href="https://www.oedro.com/return-policy">rule3, rule4</a></span>.</span></li>
+                        <li>（2）Return accepted for unsatisfactory, unopened &amp; unused items within 30 days of your receiving, but it must comply with the <span style="text-decoration: underline;"><span style="color: #ff0000; text-decoration: underline;"><a style="color: #ff0000; text-decoration: underline;" href="https://www.oedro.com/return-policy">rule5, rule6</a>.</span></span></li>
+                        <li>（3）Return is not accepted when damage is caused by unauthorized maintenance, misusing, collision, negligence, abuse, etc.</li>
+                        </ul>
+                        <p><strong><span style="font-size: 12pt;">Return Confirmation</span></strong></p>
+                        <ul>
+                        <li>（1）Contact us via <span style="color: #ff0000;"><a style="color: #ff0000;" href="mailto:service@oedro.com">service@oedro.com</a> </span>to get a return shipping label, submit order no. A clear picture or video, and shipping packaging to confirm your return is accepted.&nbsp;</li>
+                        <li>（2）When returning your package, please make sure the item is in good condition with all accessories inside. (except for items defective, damaged, or missing upon received ). Affix the return shipping label that we provided to the package, ship it to the address our customer service sent you.</li>
+                        </ul>
+                        <p>&nbsp;</p>
+                        <div class="dec-shipping">
+                        <h2><strong>Payment</strong></h2>
+                        </div>
+                        <div>
+                        <p>OEDRO.com accepts PayPal, including its credit cards, debit cards, prepaid cards, Pay in 4 payments, and PayPal Credit.</p>
+                        </div>
+                        <div class="test-payment-foots"><img src="https://www.yitahome.com/pub/media/wysiwyg/home_page_img/foot-payment-ico/2.png" alt="">&nbsp;<img src="https://www.yitahome.com/pub/media/wysiwyg/home_page_img/foot-payment-ico/3.png" alt="">&nbsp;<img src="https://www.yitahome.com/pub/media/wysiwyg/home_page_img/foot-payment-ico/4.png" alt="">&nbsp;<img src="https://www.yitahome.com/pub/media/wysiwyg/home_page_img/foot-payment-ico/5.png" alt="">&nbsp;<img src="https://www.yitahome.com/pub/media/wysiwyg/home_page_img/foot-payment-ico/6.png" alt=""></div>
+                        <div>
+                        <p>The most convenient payment method in the world.</p>
+                        </div>
+                        </div>
+                        <style>
+                            .product.data.items>.item.content{
+                                border: 0px solid #e1e1e1 !important;
+                                margin-top: 0 !important;
+                            }
+                        </style>
+                        <!--------------------------------------------------OEDRO-FAQ-END----------------------------------------------------------------------->
+                    <?php //} ?>
+
+        </div>
+    </div>
+<?php endif; ?>
+
+<script type="text/javascript">
+                    require([
+                        'jquery'
+                    ], function ($) {
+                        $(document).ready(function(){
+                            var sticky_tabs;
+                            var is_sticky = false;
+                            $(window).scroll(function(){
+                                if($(window).scrollTop() >= $(".product.info.detailed").offset().top-20){
+                                    if(!is_sticky){
+                                        $(".product.info.detailed.sticky").before('<div class="product-tabs-container"><div class="container"></div></div>');
+                                        $(".product.info.detailed.sticky .resp-tabs-list").each(function(){
+                                            $(".product-tabs-container > .container").append($(this).clone().detach());
+                                        });
+                                        $(".product-tabs-container a").click(function(){
+                                                var bid = getCaption(this.href);
+                                                /*冻结页签 点击显示/隐藏*/
+                                                $("#description").css('display','none');
+                                                $("#description").attr({"aria-expanded": "false","aria-hidden": "true"});
+                                                //alert("description");
+                                                $("#additional").css('display','none');
+                                                $("#additional").attr({"aria-expanded": "false","aria-hidden": "true"});
+                                                //alert("additional");
+                                                $("#reviews").css('display','none');
+                                                $("#reviews").attr({"aria-expanded": "false","aria-hidden": "true"});
+                                                //alert("reviews");
+                                                $("#questions").css('display','none');
+                                                $("#questions").attr({"aria-expanded": "false","aria-hidden": "true"});
+                                                //alert("questions");
+                                                $("[id='productinquiry.form']").css('display','none');
+                                                $("[id='productinquiry.form']").attr({"aria-expanded": "false","aria-hidden": "true"});
+                                                //alert("productinquiry");
+                                                $("#videos").css('display','none');
+                                                $("#videos").attr({"aria-expanded": "false","aria-hidden": "true"});
+                                                //alert("videos");
+                                                $("#faq").css('display','none');
+                                                $("#faq").attr({"aria-expanded": "false","aria-hidden": "true"});
+                                                //alert("faq");
+                                                $("[id='" + bid + "']").css('display','block');
+                                                //$("[id='" + bid + "']").css('padding-top','50px');
+                                                $("[id='" + bid + "']").attr({"aria-expanded": "true","aria-hidden": "false"});
+                                                //alert(bid);
+                                            }
+                                        );
+                                        
+                                        $('.reviews-actions.c_questions').on('click',function(){
+                                            //console.log('000000000');
+                                            /*冻结页签 点击显示/隐藏*/
+                                            $("#description").css('display','none');
+                                            $("#description").attr({"aria-expanded": "false","aria-hidden": "true"});
+                                            //alert("description");
+                                            $("#additional").css('display','none');
+                                            $("#additional").attr({"aria-expanded": "false","aria-hidden": "true"});
+                                            //alert("additional");
+                                            $("#reviews").css('display','none');
+                                            $("#reviews").attr({"aria-expanded": "false","aria-hidden": "true"});
+                                            //alert("reviews");
+                                            $("#questions").css('display','block');
+                                            $("#questions").attr({"aria-expanded": "true","aria-hidden": "false"});
+                                            //alert("questions");
+                                            $("[id='productinquiry.form']").css('display','none');
+                                            $("[id='productinquiry.form']").attr({"aria-expanded": "false","aria-hidden": "true"});
+                                            //alert("productinquiry");
+                                            $("#videos").css('display','none');
+                                            $("#videos").attr({"aria-expanded": "false","aria-hidden": "true"});
+                                            //alert("videos");
+                                            $("#faq").css('display','none');
+                                            $("#faq").attr({"aria-expanded": "false","aria-hidden": "true"});
+                                        });
+                                        <?php if (1): ?>
+                                        $(".product-tabs-container").addClass("has-sticky-header");
+                                        <?php endif; ?>
+                                        is_sticky = true;
+                                    }
+                                } else {
+                                    $(".product-tabs-container").remove();
+									$(".cart-sticky").removeClass("cart-sticky-header");
+                                    is_sticky = false;
+                                }
+                            });
+                        });
+                        
+                        function getCaption(obj){
+                            var index=obj.lastIndexOf("\#");
+                            obj=obj.substring(index+1,obj.length);
+                            // console.log(obj);
+                            return obj;
+                        };
+                        //产品页漂浮导航点击上移解决描述被覆盖问题、原下划线随点击更变 start
+                        /*$(document).on('click', '.product-tabs-container.has-sticky-header a', function () {
+                            setTimeout(() => {
+                                const y = window.scrollY;
+                                $('html,body').scrollTop(y - 120)
+                            });
+                        })*/
+                        $(document).on('click', '.product-tabs-container.has-sticky-header a', function () {
+                            const index = $(this).index('.product-tabs-container.has-sticky-header a');
+                            setTimeout(() => {
+                                const y = window.scrollY;
+                                $('html,body').scrollTop(y - 120);
+                                $('.product.items.default-style a').eq(index).click();
+                            });
+                        })
+                        //产品页漂浮导航点击上移解决描述被覆盖问题、原下划线随点击更变 end
+                    }
+                    );
+                </script>
+<style>
+.product-tabs-container.has-sticky-header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 15px 0;
+    z-index: 3;
+    background-color: #fff;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 10%);
+    text-align: left;
+    z-index: 9999999;
+}
+.product-tabs-container .item.title{display: inline-block; padding: 0 10px; font-size: 18px;}
+.product.data.items > .item.content{margin-left: 0px;}
+.review-add-ez .block-title strong{color: #000;}
+.product-tabs-container .item.title #tab-label-reviews-title span.counter:before{content: "(";}
+.product-tabs-container .item.title #tab-label-reviews-title span.counter:after{content: ")";}
+.actions.cart-sticky.cart-sticky-header{position: fixed; top: 0; right: 0; margin-top: 4px !important; z-index: 99999;}
+.actions.cart-sticky.cart-sticky-header #buy-on-amazon{display:none;}
+.cart-sticky-header #product-addtocart-button{border-radius: 4px;padding: 12px 20px;margin-top: 2px;}
+.cart-sticky-header .buynow-button #buy-now{border-radius: 4px; padding: 12px 20px;margin-top: 2px;}
+
+.product-tabs-container.has-sticky-header{padding: 5px 0;min-height: 40px;}
+.product-tabs-container .item.title a{padding: 0 3px;}
+.footer-panel{padding-bottom: 100px;}
+
+@media (min-width: 768px) {
+.has-sticky-header .container{max-width: 768px;}
+.product.data.items > div.item.content{padding-top: 70px; padding-bottom: 0px; margin: 0px;border-top: none;}
+.product.data.items #description{margin-top: -50px;}
+.product.attribute.description{border-top: 2px solid #e7e7e6; padding-top: 20px;}
+.product-block-title h2{margin-top: 0px;}
+.product-block-title{border-top: 5px solid rgb(66, 139, 202); padding-top: 20px;}
+.review-form-actions{padding-left: 9% !important;}
+
+#product-addtocart-button{width: 140px;}
+.buynow-button{width: 140px !important;}
+.paypal-button.paypal-button-context-iframe{margin-top: 4px;}
+
+.actions.cart-sticky.cart-sticky-header{width: 100% !important;background: #fff;top: 50px;}
+.actions.cart-sticky.cart-sticky-header #product-addtocart-button{width: 260px;margin-left: 12%;}
+.actions.cart-sticky.cart-sticky-header .buynow-button{width: 260px !important;}
+.actions.cart-sticky.cart-sticky-header .paypal-button.paypal-button-context-iframe{width: 160px !important;height: 45px !important;margin-top: -2px;}
+
+.soldtogether-block.amazon-stripe .block-content{display: inline-block;}
+}
+/*mobile css*/
+
+@media (max-width: 476px){
+.cart-qty{display: contents;}
+.product-wrap .box-tocart .field.qty .control input{width: 40%;margin-top: -1px;}
+.product-wrap .box-tocart .field.qty .control{width: 50%;}
+.pro-pop{width: 45%;margin-bottom: 10px;font-size: 12px;}
+.product.data.items > .item.title{border: 1px solid; padding-bottom: 25px; padding-left: 5px; padding-right: 5px;}
+.product.data.items > .item.title:before{margin-right: 10px;}
+.um-inline label.label{width: 100px;margin-right: 10px; font-size: 12px;}
+.um-inline .control{width: 240px;}
+.um-primary .submit{width: 240px; margin-left: 110px; display: block;}
+.share-span{font-size: 12px !important;margin-right: 5px !important;}
+a.at-icon-wrapper.at-share-btn{width: 30px !important; height: 30px !important;}
+.at-resp-share-element .at-icon{width: 20px !important; height: 20px !important;}
+.product.data.items .data.item td{padding: 0;}
+
+.product.data.items > .item.title{display: none;}
+.buynow-button{display: none;}
+#product-addtocart-button{width: 345px;margin-right: 1%;padding: 15px 20px;}
+.actions.cart-sticky.cart-sticky-header{bottom: 0;top:unset;width: 100% !important;z-index: 5;background: #fff;padding-top: 15px;}
+#buy-on-amazon {
+    width: 345px !important;
+    margin: unset !important;
+}
+.product-tabs-container .item.title {
+    font-size: 12px;
+    color: #000;
+    text-align: center;
+    background: #fff;
+    margin-right: 1%;
+    padding: 0;
+}
+}
+.product-tabs-container.has-sticky-header{padding: 5px 0;background-color: rgb(66, 139, 202);min-height: 40px;}
+</style>
+<style>
+.product-item-details .product-reviews-summary{display: contents !important;}
+.products-grid .product-item-info .product-item-details{height:unset !important;}
+
+.load-more {
+    margin-top: unset !important;
+}
+.goodsFAQ_customerTag_Q {
+	display: inline-block;
+	vertical-align: baseline;
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+	font-size: 14px;
+	background-color: #266ccc;
+	color: #000;
+	border-radius: 20px;
+	margin-bottom: 20px;
+	color:#FFF;
+}
+.goodsFAQ_customerTag_A{
+	display: inline-block;
+	vertical-align: baseline;
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+	font-size: 14px;
+	background-color: #000;
+	color: #000;
+	border-radius: 20px;
+	margin-bottom: 20px;
+	color:#FFF;
+}
+.goodsFAQ_title_Q{
+	font-weight: 900;
+}
+.goodsFAQ_by_Q{
+	color:#cacaca;
+}
+.goodsFAQ_customerGroup {
+	border-bottom: 1px solid #eee;
+	padding-bottom: 20px;
+	margin-bottom: 20px;
+}
+iframe.iframe_youtube {
+    width: 100%;
+    height: 560px;
+}
+@media (max-width: 767px) {
+    iframe.iframe_youtube {
+        height: unset;
+    }
+}
+.has-sticky-header .container {
+    max-width: 100% !important;
+    text-align: center !important;
+}
+li#tab-label-productinquiry\.form {
+    display: none;/*隐藏批发表单*/
+}
+</style>
+<script type="text/javascript">
+    function show_hide(){
+        if(document.getElementById('is_show').style.display == "none")
+        {
+            document.getElementById('is_show').style.display = "";
+            document.getElementById('more-btn').style.display = "none";
+            document.getElementById('less-btn').style.display = "";
+        }
+        else
+        {
+            document.getElementById('is_show').style.display = "none";
+            document.getElementById('more-btn').style.display = "";
+            document.getElementById('less-btn').style.display = "none";
+        }
+    }
+</script>
+
+<link href="/pub/media/custom/photoswipe/photoswipe.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="/pub/media/custom/photoswipe/klass.min.js"></script>
+<script type="text/javascript" src="/pub/media/custom/photoswipe/code.photoswipe-3.0.5.min.js"></script>                
+<script>
+    (function(window, PhotoSwipe){
+    		document.addEventListener('DOMContentLoaded', function(){
+    			var
+    				options = {},
+    				//instance = PhotoSwipe.attach( window.document.querySelectorAll('.phg-xg a'), options );
+    				instance = PhotoSwipe.attach( window.document.querySelectorAll('.phg-xg'), options );
+    		}, false);
+    	}(window, window.Code.PhotoSwipe));
+</script>
