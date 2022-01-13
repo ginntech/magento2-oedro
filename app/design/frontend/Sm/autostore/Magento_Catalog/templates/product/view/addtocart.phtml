@@ -6,7 +6,7 @@ $sku = $product->getSku();
 <!--------------------------车型匹配功能 Start------------------------------------->
 <?php
     /*无适配sku不显示车型匹配框*/
-    if($sku!="BR1001W008" && $sku!="BR1001W009" && $sku!="OEHLHL-1024" && $sku!="BO04-F03" && $sku!="BO1001W002" && $sku!="BR1001W014" && $sku!="BR1001W015" && $sku!="OEBO-0034" && $sku!="OEBO-0038" && $sku!="OEBO-0046" && $sku!="OEBO-0031" && $sku!="OEBO-2003" && $sku!="HA01-Q002_xS1" && $sku!="OEBO-0036" && $sku!="OEBO-0037" && $sku!="OETIFM-1070" && $sku!="OEHLHL-1000" && $sku!="OEHLHL-1023" && $sku!="OEHLHL-1031" && $sku!="OEHLHL-1019" && $sku!="OEHLHL-1025" && $sku!="OEHLHL-1032" && $sku!="OEHLHL-1028" && $sku!="OEHLHL-1038" && $sku!="OEHLHL-1010" && $sku!="OETEWB-0029" && $sku!="OETEWB-0030" && $sku!="OETEWB-0034" && $sku!="OETEWB-0035" && $sku!="B-WB-X1" && $sku!="BO05-F03B1" && $sku!="BR1001W012" && $sku!="OEBO-0030" && $sku!="BR1001W013" && $sku!="OEBO-0026" && $sku!="OEBO-0028" && $sku!="OEBO-0035" && $sku!="OEBO-0042" && $sku!="YR0401W006" && $sku!="YR0401W007" && $sku!="YR0401W008" && $sku!="BR1001W010" && $sku!="OEBO-0022" && $sku!="OEBO-0041" && $sku!="OEBO-0039" && $sku!="OEBO-2002" && $sku!="OETEWT-0014" && $sku!="OETEWT-0017" && $sku!="OEBO-0021" && $sku!="OEBO-0032" && $sku!="OEBO-0033" && $sku!="OEBO-0029" && $sku!="ED0201W006" && $sku!="OETEWT-2006" && $sku!="OEBO-2000" && $sku!="OETIFM-1057" && $sku!="OETIFM-1059" && $sku!="OETEWT-0015" && $sku!="OETEWT-0016" && $sku!="OEHLHL-1003" && $sku!="OEHLHL-1016" && $sku!="OEHLHL-1039" && $sku!="BR1001W016" && $sku!="OEHLHL-1013" && $sku!="OEHLHL-1015" && $sku!="OETEWT-0013" && $sku!="OETEWT-0011" && $sku!="OETEWT-0010" && $sku!="OETEWT-0012" && $sku!="EO1001W068" && $sku!="OEHLHL-1033" && $sku!="OEHLHL-1035" && $sku!="OEHLHL-1037" && $sku!="OEHLHL-1005" && $sku!="OEHLHL-1006" && $sku!="OEHLHL-1007" && $sku!="OEHLHL-1009" && $sku!="OEHLHL-1012" && $sku!="OEHLHL-1017" && $sku!="OEHLHL-1020" && $sku!="OEHLHL-1021" && $sku!="OEHLHL-1026" && $sku!="OEHLHL-1027" && $sku!="OEHLHL-1030" && $sku!="OETIFM-1087" && $sku!="OEHLHL-1002" && $sku!="OEHLHL-1022" && $sku!="OEHLHL-1004" && $sku!="OEHLHL-1018" && $sku!="OEHLHL-1029" && $sku!="OEHLHL-1036" && $sku!="OETIFM-1098" && $sku!="OETESS-0059" && $sku!="OETETC-1055" && $sku!="OETESS-0073" && $sku!="OETESS-0071" && $sku!="OETIFM-1060" && $sku!="OETETC-1053" && $sku!="OETETC-1054" && $sku!="OETETC-1057" && $sku!="OETETC-1073" && $sku!="OETIFM-1096" && $sku!="OETIFM-1097" && $sku!="OETIFM-1102" && $sku!="OETIFM-1104" && $sku!="BO1001W003" && $sku!="BO1001W004" && $sku!="BO1001W001" && $sku!="OEBO-0015" && $sku!="OEBO-0023" && $sku!="OEBO-0024" && $sku!="BR1001W005" && $sku!="OEBO-0043" && $sku!="OEBO-0047" && $sku!="BR1001W006" && $sku!="BR1001W011" && $sku!="OEBO-0016" && $sku!="OEBO-0017" && $sku!="OEBO-0020" && $sku!="OEBO-0025" && $sku!="OEBO-0027" && $sku!="OEBO-0018" && $sku!="OEBO-0019" && $sku!="OEBO-0040" && $sku!="OEBO-0044" && $sku!="OEBO-0045" && $sku!="OEBO-2001" && $sku!="OETIFM-1105" && $sku!="OETIFM-1108" && $sku!="OETIFM-1112" && $sku!="OETIFM-1113" && $sku!="OETIFM-1115" && $sku!="OETIFM-1117" && $sku!="OETIFM-1118" && $sku!="OETIFM-1121" && $sku!="OETIFM-1122" && $sku!="OETIFM-1123" && $sku!="OETIFM-1124" && $sku!="OETIFM-1145" && $sku!="OEHLHL-9005" && $sku!="OEHLHL-9007" && $sku!="OEHLHL-9009" && $sku!="OEHLHL-9011" && $sku!="OETESS-0077" && $sku!="OETESS-0101" && $sku!="OETISC-5001" && $sku!="OETESS-0103" && $sku!="OETESS-0104" && $sku!="OETESS-0105" && $sku!="OETESS-0106" && $sku!="OETETC-1074" && $sku!="OETETC-1075" && $sku!="OETETC-1076" && $sku!="OEHLHL-1001" && $sku!="OETIFM-1137" && $sku!="OETIFM-1150" && $sku!="OETETC-1052" && $sku!="OETETC-1077" && $sku!="OETETC-1080" && $sku!="OETETC-1082" && $sku!="OETETC-1078" && $sku!="OETETC-1084" && $sku!="OETETC-1081" && $sku!="OETIFM-1114" && $sku!="OETIFM-1149" && $sku!="OETIFM-1152" && $sku!="OETIFM-1156" && $sku!="OETIFM-1159" && $sku!="OETIFM-1091" && $sku!="OETIFM-1158" && $sku!="OETIFM-1127" && $sku!="OETIFM-1133" && $sku!="OETIFM-1058" && $sku!="OETETC-1079" && $sku!="OETIFM-1147" && $sku!="OETIFM-1132" && $sku!="OETIFM-1144" && $sku!="OETIFM-1143" && $sku!="OETIFM-1136" && $sku!="OETIFM-1130" && $sku!="OETIFM-1140" && $sku!="OETIFM-1100" && $sku!="OETIFM-1090" && $sku!="OETIFM-1160" && $sku!="OETIFM-1103" && $sku!="OETIFM-1128" && $sku!="OETIFM-1094" && $sku!="OETIFM-1099" && $sku!="OETIFM-1148" && $sku!="OETEWB-0031" && $sku!="OETEWB-0037" && $sku!="OETEWB-0038" && $sku!="OETETC-1083" && $sku!="OEHLHL-9013" && $sku!="OEHLHL-9014" && $sku!="OEHLHL-9006" && $sku!="OEHLHL-9010" && $sku!="OEHLHL-9001" && $sku!="OEHLHL-9002" && $sku!="OEHLHL-9012" && $sku!="OEHLHL-1014" && $sku!="OEHLHL-1001-OE" && $sku!="OEHLHL-1011" && $sku!="YO03K07" && $sku!="OETIFM-1134" && $sku!="OETIFM-1101" && $sku!="OETIFM-1110" && $sku!="OETIFM-1111" && $sku!="OETISC-6001" && $sku!="OETEWB-1001" && $sku!="OETEWB-1010" && $sku!="OETEWB-1003" && $sku!="OETEWB-1004" && $sku!="OETEWB-1008" && $sku!="EO1001W040" && $sku!="EO1001W042" && $sku!="OETIFM-1056" && $sku!="OETIFM-1109" && $sku!="OETIFM-1119" && $sku!="OETIFM-1125" && $sku!="OETIFM-1126" && $sku!="OETIFM-1153" && $sku!="OETIFM-1146" && $sku!="OETIFM-1139" && $sku!="OETIFM-1142" && $sku!="OETIFM-1165" && $sku!="OETIFM-1166" && $sku!="OETIFM-1167")
+    if($sku!="BR1001W008" && $sku!="BR1001W009" && $sku!="OEHLHL-1024" && $sku!="BO04-F03" && $sku!="BO1001W002" && $sku!="BR1001W014" && $sku!="BR1001W015" && $sku!="OEBO-0034" && $sku!="OEBO-0038" && $sku!="OEBO-0046" && $sku!="OEBO-0031" && $sku!="OEBO-2003" && $sku!="HA01-Q002_xS1" && $sku!="OEBO-0036" && $sku!="OEBO-0037" && $sku!="OETIFM-1070" && $sku!="OEHLHL-1000" && $sku!="OEHLHL-1023" && $sku!="OEHLHL-1031" && $sku!="OEHLHL-1019" && $sku!="OEHLHL-1025" && $sku!="OEHLHL-1032" && $sku!="OEHLHL-1028" && $sku!="OEHLHL-1038" && $sku!="OEHLHL-1010" && $sku!="OETEWB-0029" && $sku!="OETEWB-0030" && $sku!="OETEWB-0034" && $sku!="OETEWB-0035" && $sku!="B-WB-X1" && $sku!="BO05-F03B1" && $sku!="BR1001W012" && $sku!="OEBO-0030" && $sku!="BR1001W013" && $sku!="OEBO-0026" && $sku!="OEBO-0028" && $sku!="OEBO-0035" && $sku!="OEBO-0042" && $sku!="YR0401W006" && $sku!="YR0401W007" && $sku!="YR0401W008" && $sku!="BR1001W010" && $sku!="OEBO-0022" && $sku!="OEBO-0041" && $sku!="OEBO-0039" && $sku!="OEBO-2002" && $sku!="OETEWT-0014" && $sku!="OETEWT-0017" && $sku!="OEBO-0021" && $sku!="OEBO-0032" && $sku!="OEBO-0033" && $sku!="OEBO-0029" && $sku!="ED0201W006" && $sku!="OETEWT-2006" && $sku!="OEBO-2000" && $sku!="OETIFM-1057" && $sku!="OETIFM-1059" && $sku!="OETEWT-0015" && $sku!="OETEWT-0016" && $sku!="OEHLHL-1003" && $sku!="OEHLHL-1016" && $sku!="OEHLHL-1039" && $sku!="BR1001W016" && $sku!="OEHLHL-1013" && $sku!="OEHLHL-1015" && $sku!="OETEWT-0013" && $sku!="OETEWT-0011" && $sku!="OETEWT-0010" && $sku!="OETEWT-0012" && $sku!="EO1001W068" && $sku!="OEHLHL-1033" && $sku!="OEHLHL-1035" && $sku!="OEHLHL-1037" && $sku!="OEHLHL-1005" && $sku!="OEHLHL-1006" && $sku!="OEHLHL-1007" && $sku!="OEHLHL-1009" && $sku!="OEHLHL-1012" && $sku!="OEHLHL-1017" && $sku!="OEHLHL-1020" && $sku!="OEHLHL-1021" && $sku!="OEHLHL-1026" && $sku!="OEHLHL-1027" && $sku!="OEHLHL-1030" && $sku!="OETIFM-1087" && $sku!="OEHLHL-1002" && $sku!="OEHLHL-1022" && $sku!="OEHLHL-1004" && $sku!="OEHLHL-1018" && $sku!="OEHLHL-1029" && $sku!="OEHLHL-1036" && $sku!="OETIFM-1098" && $sku!="OETESS-0059" && $sku!="OETETC-1055" && $sku!="OETESS-0073" && $sku!="OETESS-0071" && $sku!="OETIFM-1060" && $sku!="OETETC-1053" && $sku!="OETETC-1054" && $sku!="OETETC-1057" && $sku!="OETETC-1073" && $sku!="OETIFM-1096" && $sku!="OETIFM-1097" && $sku!="OETIFM-1102" && $sku!="OETIFM-1104" && $sku!="BO1001W003" && $sku!="BO1001W004" && $sku!="BO1001W001" && $sku!="OEBO-0015" && $sku!="OEBO-0023" && $sku!="OEBO-0024" && $sku!="BR1001W005" && $sku!="OEBO-0043" && $sku!="OEBO-0047" && $sku!="BR1001W006" && $sku!="BR1001W011" && $sku!="OEBO-0016" && $sku!="OEBO-0017" && $sku!="OEBO-0020" && $sku!="OEBO-0025" && $sku!="OEBO-0027" && $sku!="OEBO-0018" && $sku!="OEBO-0019" && $sku!="OEBO-0040" && $sku!="OEBO-0044" && $sku!="OEBO-0045" && $sku!="OEBO-2001" && $sku!="OETIFM-1105" && $sku!="OETIFM-1108" && $sku!="OETIFM-1112" && $sku!="OETIFM-1113" && $sku!="OETIFM-1115" && $sku!="OETIFM-1117" && $sku!="OETIFM-1118" && $sku!="OETIFM-1121" && $sku!="OETIFM-1122" && $sku!="OETIFM-1123" && $sku!="OETIFM-1124" && $sku!="OETIFM-1145" && $sku!="OEHLHL-9005" && $sku!="OEHLHL-9007" && $sku!="OEHLHL-9009" && $sku!="OEHLHL-9011" && $sku!="OETESS-0077" && $sku!="OETESS-0101" && $sku!="OETISC-5001" && $sku!="OETESS-0103" && $sku!="OETESS-0104" && $sku!="OETESS-0105" && $sku!="OETESS-0106" && $sku!="OETETC-1074" && $sku!="OETETC-1075" && $sku!="OETETC-1076" && $sku!="OEHLHL-1001" && $sku!="OETIFM-1137" && $sku!="OETIFM-1150" && $sku!="OETETC-1052" && $sku!="OETETC-1077" && $sku!="OETETC-1080" && $sku!="OETETC-1082" && $sku!="OETETC-1078" && $sku!="OETETC-1084" && $sku!="OETETC-1081" && $sku!="OETIFM-1114" && $sku!="OETIFM-1149" && $sku!="OETIFM-1152" && $sku!="OETIFM-1156" && $sku!="OETIFM-1159" && $sku!="OETIFM-1091" && $sku!="OETIFM-1158" && $sku!="OETIFM-1127" && $sku!="OETIFM-1133" && $sku!="OETIFM-1058" && $sku!="OETETC-1079" && $sku!="OETIFM-1147" && $sku!="OETIFM-1132" && $sku!="OETIFM-1144" && $sku!="OETIFM-1143" && $sku!="OETIFM-1136" && $sku!="OETIFM-1130" && $sku!="OETIFM-1140" && $sku!="OETIFM-1100" && $sku!="OETIFM-1090" && $sku!="OETIFM-1160" && $sku!="OETIFM-1103" && $sku!="OETIFM-1128" && $sku!="OETIFM-1094" && $sku!="OETIFM-1099" && $sku!="OETIFM-1148" && $sku!="OETEWB-0031" && $sku!="OETEWB-0037" && $sku!="OETEWB-0038" && $sku!="OETETC-1083" && $sku!="OEHLHL-9013" && $sku!="OEHLHL-9014" && $sku!="OEHLHL-9006" && $sku!="OEHLHL-9010" && $sku!="OEHLHL-9001" && $sku!="OEHLHL-9002" && $sku!="OEHLHL-9012" && $sku!="OEHLHL-1014" && $sku!="OEHLHL-1001-OE" && $sku!="OEHLHL-1011")
     {
 ?>
 <div style="text-align: left;padding: 0 0 0 2%;background-color: #000;color: #FFF;font-size: 20px;font-weight: 600;">SELECT YOUR VEHICLE</div>
@@ -28,7 +28,7 @@ $sku = $product->getSku();
     }
 ?>
 <script>
-require(['jquery', 'jquery/ui'], function(jQuery){
+require(['jquery', 'jquery/ui', 'jquery/jquery.cookie', 'domReady!'], function(jQuery){
 // JavaScript Document
     var ck_pyear = jQuery.cookie('ck_pyear');
   	var ck_pmake = jQuery.cookie('ck_pmake');
@@ -300,7 +300,7 @@ function ResetAll(){
     }
     @media (max-width: 480px) {
         .product-info-main .product-addto-links {
-            top: -80px !important;
+            top: -50px !important;
         }
         #product-addtocart-button {
             width: unset !important;
@@ -311,8 +311,8 @@ function ResetAll(){
     }
     div#addthis_wrap {
         display: inline-block;
-        margin: 12px;
-        padding: 0 0 50px 0;
+        /*margin: 12px;*/
+        /*padding: 0 0 50px 0;*/
     }
     .product.media {
         z-index: 99999;
@@ -320,6 +320,12 @@ function ResetAll(){
     }
     .product-info-main {
         margin-bottom: 0px !important;
+    }
+    @media (max-width: 540px){
+        div#addthis_wrap {
+            float:unset !important;
+        }
+        
     }
 </style>
 <!--------------------------车型匹配功能 End------------------------------------->
@@ -453,7 +459,7 @@ require(['jquery', 'jquery/ui'], function(jQuery){
      * @param {string} box 需要定位的元素css选择器 以元素相邻的下一个元素为主
      */
     const absoluteFN = (box, boxTop, bootomTop, H = 0, W) => {
-        console.log(box, boxTop, bootomTop, H);
+        //console.log(box, boxTop, bootomTop, H);
         if (window.innerWidth > 992) {
             const scrollY = window.scrollY;
             if (scrollY >= boxTop && scrollY <= bootomTop - H) {
@@ -464,6 +470,7 @@ require(['jquery', 'jquery/ui'], function(jQuery){
                     boxSizing: 'content-box',
                     backgroundColor: '#fff',
                     zIndex: 10,
+                    behavior: 'smooth'
                 });
     
             } else if (scrollY >= boxTop && scrollY < bootomTop + 70) {
@@ -474,6 +481,7 @@ require(['jquery', 'jquery/ui'], function(jQuery){
                     boxSizing: 'content-box',
                     backgroundColor: '#fff',
                     zIndex: 10,
+                    behavior: 'smooth'
                 });
     
             } else {
@@ -488,12 +496,21 @@ require(['jquery', 'jquery/ui'], function(jQuery){
     // 这个值会随着设置css而变化，所以只能进来后就取一次
     const box = '.product.media';
     const boxTop = jQuery(box).offset().top;
-    const bootomTop = jQuery('.box-tocart').offset().top;
+    
+    
     
     
     /*悬浮产品图*/
     function setImg() {
-        const H = jQuery(box).height();
+        if(jQuery('.block-title.title')[0])
+        {
+            var bootomTop = jQuery('.block-title.title').offset().top;//description块高度会变，所以放在方法内作为变量
+        }
+        else
+        {
+            var bootomTop = jQuery('.page-bottom').offset().top;//description块高度会变，所以放在方法内作为变量
+        }
+        const H = jQuery(box).height()+50;
         const W = jQuery(box).width();
         absoluteFN(box, boxTop, bootomTop, H, W);
     };
